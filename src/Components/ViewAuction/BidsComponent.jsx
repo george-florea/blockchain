@@ -25,13 +25,6 @@ const BidsComponent = ({
   const { web3, accounts, contracts } = useWeb3();
   const [timeRemaining, setTimeRemaining] = useState(0);
   const [bid, setBid] = useState(null);
-  const [auctionState, setAuctionState] = useState(0);
-
-  useEffect(() => {
-    if (state != undefined) {
-      setAuctionState(parseInt(state.toString()));
-    }
-  }, [state]);
 
   const AuctionStates = {
     canceled: 3,
@@ -39,6 +32,16 @@ const BidsComponent = ({
     running: 1,
     started: 0,
   };
+
+  function getStateString(state) {
+    debugger;
+    for (let key in AuctionStates) {
+      if (AuctionStates[key] === state) {
+        return key;
+      }
+    }
+    return "Unknown";
+  }
 
   const formatTime = (timeInSeconds) => {
     const days = Math.floor(timeInSeconds / 86400);
@@ -82,7 +85,7 @@ const BidsComponent = ({
   const finishHandler = async () => {
     finishAuction();
   };
-  debugger;
+
   return (
     <Flex
       ml={10}
@@ -95,6 +98,10 @@ const BidsComponent = ({
     >
       <Heading size="lg">Bids</Heading>
       <UnorderedList mt="3" mb={5}>
+        <ListItem>
+          <Text fontWeight={"bold"}>State: </Text>
+          <Text>{getStateString(state)}</Text>
+        </ListItem>
         <ListItem>
           <Text fontWeight={"bold"}>Time remaining: </Text>
           <Text>{formatTime(timeRemaining)}</Text>
@@ -138,7 +145,8 @@ const BidsComponent = ({
             </>
           )
         )}
-        {(state == AuctionStates.canceled || state == AuctionStates.ended) && (
+        {((state == AuctionStates.canceled && accounts[0] != owner) ||
+          (state == AuctionStates.ended && accounts[0] == owner)) && (
           <Button bgColor="Highlight" onClick={() => finishHandler()}>
             Finish auction
           </Button>

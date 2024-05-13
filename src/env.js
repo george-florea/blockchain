@@ -1,3 +1,3 @@
 export default {
-  auctionCreatorAddress: "0x42A548449d07Bd832c5D58B10a3eF0133f68C8F6",
+  auctionCreatorAddress: "0x53E7CaF56f701Bb1F9ec555293F370244A6AAE5C",
 };

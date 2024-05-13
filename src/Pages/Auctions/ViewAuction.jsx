@@ -22,7 +22,6 @@ const ViewAuction = () => {
     let auction = await auctions[id].methods.getAuctionDetails().call();
     setAuctionDetails(auction);
     console.log(auction);
-    debugger;
   };
 
   const placeBid = async (ammount) => {
@@ -60,7 +59,7 @@ const ViewAuction = () => {
 
   return (
     <Flex flexDir="row" w="100%" h="100%">
-      {auctionDetails && (
+      {auctionDetails && auctionDetails.auctionState && (
         <>
           <Flex flexDir={"column"} w="70%" alignItems={"center"}>
             <Flex dir="row">
@@ -90,7 +89,7 @@ const ViewAuction = () => {
             owner={auctionDetails.owner}
             cancelAuction={cancelAuction}
             finishAuction={finishAuction}
-            state={auctionDetails.auctionState}
+            state={parseInt(auctionDetails.auctionState.toString())}
           />
         </>
       )}

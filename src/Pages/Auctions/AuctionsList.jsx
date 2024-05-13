@@ -38,7 +38,7 @@ const AuctionsList = () => {
         <Heading as="h1" size="xl">
           Auctions
         </Heading>
-        <Button bgColor="Highlight" onClick={() => navigate("/auctions/add")}>
+        <Button bgColor="orange" onClick={() => navigate("/auctions/add")}>
           Add object to auction
         </Button>
       </Flex>
