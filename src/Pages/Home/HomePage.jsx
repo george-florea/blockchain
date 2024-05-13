@@ -69,7 +69,7 @@ const HomePage = () => {
                 }}
                 onClick={() => navigate("/auctions")}
               >
-                Auctions
+                Go to Auctions
               </Button>
             </Stack>
           </Stack>

@@ -5,6 +5,9 @@ import HomePage from "./Pages/Home/HomePage";
 import AuctionsList from "./Pages/Auctions/AuctionsList";
 import AddAuction from "./Pages/Auctions/AddAuction";
 import ViewAuction from "./Pages/Auctions/ViewAuction";
+import MetamaskLogin from "./Pages/Login";
+import PrivateRoute from "./Components/PrivateRoute/Private";
+import ListMyAuctions from "./Pages/MyAuctions/ListMyAuctions";
 
 const router = createBrowserRouter([
   {
@@ -16,19 +19,48 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
+        path: "/login",
+        element: <MetamaskLogin />,
+      },
+      {
         path: "/auctions",
         children: [
           {
             path: "/auctions",
-            element: <AuctionsList />,
+            element: (
+              <PrivateRoute>
+                <AuctionsList />
+              </PrivateRoute>
+            ),
           },
           {
             path: "/auctions/add",
-            element: <AddAuction />,
+            element: (
+              <PrivateRoute>
+                <AddAuction />
+              </PrivateRoute>
+            ),
           },
           {
             path: "/auctions/:id",
-            element: <ViewAuction />,
+            element: (
+              <PrivateRoute>
+                <ViewAuction />
+              </PrivateRoute>
+            ),
+          },
+        ],
+      },
+      {
+        path: "/myAuctions",
+        children: [
+          {
+            path: "/myAuctions",
+            element: (
+              <PrivateRoute>
+                <ListMyAuctions />
+              </PrivateRoute>
+            ),
           },
         ],
       },

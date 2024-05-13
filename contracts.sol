@@ -40,6 +40,25 @@ contract AuctionCreator{
         return auctionInfoList;
     }
 
+    function getMyAuctions(address sender) public view returns(AuctionInfo[] memory) {
+        uint len = 0;
+        for (uint256 i = 0; i < auctionsCount; i++) {
+            if(auctions[i].checkAddressForBid(sender)){
+                len++;
+            }
+        }
+
+        AuctionInfo[] memory temp = new AuctionInfo[](len);
+        for (uint256 i = 0; i < auctionsCount; i++) {
+            if(auctions[i].checkAddressForBid(sender)){
+                address auctionAddress = address(auctions[i]);
+                temp[i] = AuctionInfo(auctions[i].getId(), auctionAddress, auctions[i].getTitle(), auctions[i].getDescription(), auctions[i].getImageUrls());
+            }
+        }
+        
+        return temp;
+    }
+
 }
 
 
@@ -219,6 +238,10 @@ contract Auction{
 
     function getImageUrls() public view returns (string[] memory) {
         return imageUrls;
+    }
+
+    function checkAddressForBid(address sender) public view returns (bool){
+        return bids[sender] > 0;
     }
 
     function getId() public view returns (uint) {

@@ -71,7 +71,7 @@ export default function Header() {
 
       <GridItem colSpan={4}>
         <Flex alignItems={"center"} justifyContent={"end"} flexBasis="30%">
-          <Text>Hello, User</Text>
+          <NavLink path={"/myAuctions"}>My auctions</NavLink>
         </Flex>
       </GridItem>
     </Grid>
