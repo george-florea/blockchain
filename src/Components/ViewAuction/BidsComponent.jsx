@@ -34,7 +34,6 @@ const BidsComponent = ({
   };
 
   function getStateString(state) {
-    debugger;
     for (let key in AuctionStates) {
       if (AuctionStates[key] === state) {
         return key;
@@ -70,12 +69,9 @@ const BidsComponent = ({
     return () => clearInterval(timerInterval);
   }, [web3, endBlock]);
 
-  useEffect(() => {
-    console.log(accounts[0]);
-  }, [accounts]);
-
   const bidHandler = () => {
     placeBid(bid);
+    setBid(null);
   };
 
   const cancelHandler = async () => {
