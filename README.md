@@ -3,7 +3,6 @@
 ## cerinte proiect:
 ![image](https://github.com/jovialjoker/elonMusk/assets/43217153/12c76954-e90f-46ee-809c-cc545eedbb91)
 
-## Pasi prezentare aplicatie:
 > (optional)
 > pentru a prezenta si flow-ul de conectare cu metamask, in caz ca v-ati conectat deja, puteti sa
 > - apasati f12 in site
@@ -13,6 +12,8 @@
 >
 ##   (obligatoriu)
 >   de creeat 2 conturi in metamask pentru a demonstra functia de owner si de bidder intr-o licitatie
+
+## Pasi prezentare aplicatie:
 
 1.  De pe pagina de home apasati ori pe butonul central de *go to auctions* ori pe *auctions* din meniul de navigare
 ![image](https://github.com/jovialjoker/elonMusk/assets/43217153/aead8aa9-a7c7-441b-b57f-3b98e6ea2698)
