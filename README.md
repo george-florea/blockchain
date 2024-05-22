@@ -61,6 +61,10 @@
 - fiecare folder este asignat unei parti de aplicatie: Home, MyAuctions, Auctions
 - fisierele .jsx sunt asociate unei pagini
 
+## stocarea pozelor se face pe firebase deoarece am incercat sa stochez pozele pe ipfs, dar:
+1. pe infura, un site care ofera servicii de hostare a ipfs, nu mai acorda api key-uri pentru interactiunea cu ipfs pentru utilizatorii noi
+2. pentru a hosta local ipfs, trebuie platita o suma de bani si nu am considerat ca merita
+
 ## Cerinte optionale:
 1. Tratare events:
    - in folderul src/Pages/Auctions/observables, in fisierul AuctionObserver.js:
@@ -73,4 +77,12 @@
 
 2. Analiza gas-cost
    - se gaseste in fiserul src/Pages/Auctions/AddAuction.jsx
-   - explicatia se gaseste aici: (explicatie gpt)[https://chatgpt.com/share/0afb06dd-36ea-40a8-a682-a2f918ea423c]
+   - explicatia se gaseste aici: [explicatie gpt](https://chatgpt.com/share/0afb06dd-36ea-40a8-a682-a2f918ea423c)
+   - aceasta analiza se apeleaza automat de fiecare data cand dorim sa adaugam o noua licitatie, doar daca utilizatorul vrea sa continue tranzactia se va realiza
+  
+3. Control al starii tranzactiilor
+   - am folosit un loading spinner si toast-uri pentru a oferi feedback despre starea tranzactiilor
+   - prin try catch putem observa daca o tranzactie s-a realizat cu succes sau nu si afisam utilizatorului mesajul potrivit in toast
+   ![image](https://github.com/jovialjoker/elonMusk/assets/43217153/ffd2873f-707e-4967-8130-e9f4161bcadb)
+   -exemplu toast: ![image](https://github.com/jovialjoker/elonMusk/assets/43217153/481a22b6-0872-4037-96e3-4aedf02063f8)
+
